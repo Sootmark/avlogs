@@ -1,0 +1,6 @@
+plaso.tsv: what plaso (the log2timeline/plaso:20260720 Docker image) reads
+from the logs in tests/fixtures/plaso/ with its mcafee_protection,
+symantec_scanlog, text/sophos_av, trendmicro_vd and trendmicro_url parsers
+(psort -o json_line), one line per event: the file, the time (microseconds
+since 1970, local times as if UTC), then the values compared (see
+tests/plaso.rs). Written from plaso's output, not from this crate.
