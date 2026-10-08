@@ -146,10 +146,13 @@ fn quoted(text: &str, marker: &str, close: char) -> Option<String> {
     value(&rest[..end])
 }
 
+/// A hexadecimal time first, and Symantec's forty or more columns.
 pub(crate) fn is_symantec(line: &str) -> bool {
-    line.split(',')
-        .next()
-        .is_some_and(|stamp| hex_time(stamp).is_some())
+    csv(line).len() >= 40
+        && line
+            .split(',')
+            .next()
+            .is_some_and(|stamp| hex_time(stamp).is_some())
 }
 
 /// `2A0A1E011B21`: years since 1970, month from 0, day, hour, minute,

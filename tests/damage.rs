@@ -46,3 +46,8 @@ fn port_blocking_destination() {
         .unwrap();
     assert_eq!(port.get("Destination"), Some("23.56.2.70:443"));
 }
+
+#[test]
+fn other_csvs_are_not_symantec() {
+    assert_eq!(avlogs::detect("ids.csv", b"2A0A1E011B21,host,user\n"), None);
+}
